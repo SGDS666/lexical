@@ -24,7 +24,7 @@ import {
   ListNode,
   REMOVE_LIST_COMMAND,
 } from '@lexical/list';
-import {INSERT_EMBED_COMMAND} from '@lexical/react/LexicalAutoEmbedPlugin';
+// import { INSERT_EMBED_COMMAND } from '@lexical/react/LexicalAutoEmbedPlugin';
 import {useLexicalComposerContext} from '@lexical/react/LexicalComposerContext';
 import {$isDecoratorBlockNode} from '@lexical/react/LexicalDecoratorBlockNode';
 import {INSERT_HORIZONTAL_RULE_COMMAND} from '@lexical/react/LexicalHorizontalRuleNode';
@@ -72,37 +72,40 @@ import * as React from 'react';
 import {IS_APPLE} from 'shared/environment';
 
 import useModal from '../../hooks/useModal';
-import catTypingGif from '../../images/cat-typing.gif';
+// import catTypingGif from '../../images/cat-typing.gif';
 import {$createStickyNode} from '../../nodes/StickyNode';
 import ColorPicker from '../../ui/ColorPicker';
 import DropDown, {DropDownItem} from '../../ui/DropDown';
 import {getSelectedNode} from '../../utils/getSelectedNode';
 import {sanitizeUrl} from '../../utils/url';
-import {EmbedConfigs} from '../AutoEmbedPlugin';
+// import { EmbedConfigs } from '../AutoEmbedPlugin';
 import {INSERT_COLLAPSIBLE_COMMAND} from '../CollapsiblePlugin';
 import {InsertEquationDialog} from '../EquationsPlugin';
-import {INSERT_EXCALIDRAW_COMMAND} from '../ExcalidrawPlugin';
+// import { INSERT_EXCALIDRAW_COMMAND } from '../ExcalidrawPlugin';
 import {
-  INSERT_IMAGE_COMMAND,
+  // INSERT_IMAGE_COMMAND,
   InsertImageDialog,
-  InsertImagePayload,
+  // InsertImagePayload,
 } from '../ImagesPlugin';
 import {InsertPollDialog} from '../PollPlugin';
-import {InsertNewTableDialog, InsertTableDialog} from '../TablePlugin';
+import {
+  // InsertNewTableDialog,
+  InsertTableDialog,
+} from '../TablePlugin';
 
 const blockTypeToBlockName = {
-  bullet: 'Bulleted List',
-  check: 'Check List',
-  code: 'Code Block',
-  h1: 'Heading 1',
-  h2: 'Heading 2',
-  h3: 'Heading 3',
-  h4: 'Heading 4',
-  h5: 'Heading 5',
-  h6: 'Heading 6',
-  number: 'Numbered List',
-  paragraph: 'Normal',
-  quote: 'Quote',
+  bullet: '列表',
+  check: '选择项',
+  code: '代码块',
+  h1: '一级标题',
+  h2: '二级标题',
+  h3: '三级标题',
+  h4: '四级标题',
+  h5: '五级标题',
+  h6: '六级标题',
+  number: '编号',
+  paragraph: '普通',
+  quote: '引用',
 };
 
 function getCodeLanguageOptions(): [string, string][] {
@@ -255,55 +258,55 @@ function BlockFormatDropDown({
         className={'item ' + dropDownActiveClass(blockType === 'paragraph')}
         onClick={formatParagraph}>
         <i className="icon paragraph" />
-        <span className="text">Normal</span>
+        <span className="text">普通</span>
       </DropDownItem>
       <DropDownItem
         className={'item ' + dropDownActiveClass(blockType === 'h1')}
         onClick={() => formatHeading('h1')}>
         <i className="icon h1" />
-        <span className="text">Heading 1</span>
+        <span className="text">一级标题</span>
       </DropDownItem>
       <DropDownItem
         className={'item ' + dropDownActiveClass(blockType === 'h2')}
         onClick={() => formatHeading('h2')}>
         <i className="icon h2" />
-        <span className="text">Heading 2</span>
+        <span className="text">二级标题</span>
       </DropDownItem>
       <DropDownItem
         className={'item ' + dropDownActiveClass(blockType === 'h3')}
         onClick={() => formatHeading('h3')}>
         <i className="icon h3" />
-        <span className="text">Heading 3</span>
+        <span className="text">三级标题</span>
       </DropDownItem>
       <DropDownItem
         className={'item ' + dropDownActiveClass(blockType === 'bullet')}
         onClick={formatBulletList}>
         <i className="icon bullet-list" />
-        <span className="text">Bullet List</span>
+        <span className="text">列表</span>
       </DropDownItem>
       <DropDownItem
         className={'item ' + dropDownActiveClass(blockType === 'number')}
         onClick={formatNumberedList}>
         <i className="icon numbered-list" />
-        <span className="text">Numbered List</span>
+        <span className="text">编号</span>
       </DropDownItem>
       <DropDownItem
         className={'item ' + dropDownActiveClass(blockType === 'check')}
         onClick={formatCheckList}>
         <i className="icon check-list" />
-        <span className="text">Check List</span>
+        <span className="text">选择项</span>
       </DropDownItem>
       <DropDownItem
         className={'item ' + dropDownActiveClass(blockType === 'quote')}
         onClick={formatQuote}>
         <i className="icon quote" />
-        <span className="text">Quote</span>
+        <span className="text">引用</span>
       </DropDownItem>
       <DropDownItem
         className={'item ' + dropDownActiveClass(blockType === 'code')}
         onClick={formatCode}>
         <i className="icon code" />
-        <span className="text">Code Block</span>
+        <span className="text">代码块</span>
       </DropDownItem>
     </DropDown>
   );
@@ -588,9 +591,9 @@ export default function ToolbarPlugin(): JSX.Element {
     },
     [activeEditor, selectedElementKey],
   );
-  const insertGifOnClick = (payload: InsertImagePayload) => {
-    activeEditor.dispatchCommand(INSERT_IMAGE_COMMAND, payload);
-  };
+  // const insertGifOnClick = (payload: InsertImagePayload) => {
+  //   activeEditor.dispatchCommand(INSERT_IMAGE_COMMAND, payload);
+  // };
 
   return (
     <div className="toolbar">
@@ -757,7 +760,7 @@ export default function ToolbarPlugin(): JSX.Element {
               title="Strikethrough"
               aria-label="Format text with a strikethrough">
               <i className="icon strikethrough" />
-              <span className="text">Strikethrough</span>
+              <span className="text">下划线</span>
             </DropDownItem>
             <DropDownItem
               onClick={() => {
@@ -767,7 +770,7 @@ export default function ToolbarPlugin(): JSX.Element {
               title="Subscript"
               aria-label="Format text with a subscript">
               <i className="icon subscript" />
-              <span className="text">Subscript</span>
+              <span className="text">下标</span>
             </DropDownItem>
             <DropDownItem
               onClick={() => {
@@ -780,7 +783,7 @@ export default function ToolbarPlugin(): JSX.Element {
               title="Superscript"
               aria-label="Format text with a superscript">
               <i className="icon superscript" />
-              <span className="text">Superscript</span>
+              <span className="text">上标</span> {/* Superscript */}
             </DropDownItem>
             <DropDownItem
               onClick={clearFormatting}
@@ -788,15 +791,16 @@ export default function ToolbarPlugin(): JSX.Element {
               title="Clear text formatting"
               aria-label="Clear all text formatting">
               <i className="icon clear" />
-              <span className="text">Clear Formatting</span>
+              <span className="text">清除格式</span>
+              {/*Clear text formatting */}
             </DropDownItem>
           </DropDown>
           <Divider />
           <DropDown
             disabled={!isEditable}
             buttonClassName="toolbar-item spaced"
-            buttonLabel="Insert"
-            buttonAriaLabel="Insert specialized editor node"
+            buttonLabel="插入"
+            buttonAriaLabel="插入特殊节点"
             buttonIconClassName="icon plus">
             <DropDownItem
               onClick={() => {
@@ -807,11 +811,12 @@ export default function ToolbarPlugin(): JSX.Element {
               }}
               className="item">
               <i className="icon horizontal-rule" />
-              <span className="text">Horizontal Rule</span>
+              <span className="text">水平分割线</span>
+              {/*horizontal-rule */}
             </DropDownItem>
             <DropDownItem
               onClick={() => {
-                showModal('Insert Image', (onClose) => (
+                showModal('插入图片', (onClose) => (
                   <InsertImageDialog
                     activeEditor={activeEditor}
                     onClose={onClose}
@@ -820,9 +825,9 @@ export default function ToolbarPlugin(): JSX.Element {
               }}
               className="item">
               <i className="icon image" />
-              <span className="text">Image</span>
+              <span className="text">图片</span> {/* image */}
             </DropDownItem>
-            <DropDownItem
+            {/* <DropDownItem
               onClick={() =>
                 insertGifOnClick({
                   altText: 'Cat typing on a laptop',
@@ -831,9 +836,9 @@ export default function ToolbarPlugin(): JSX.Element {
               }
               className="item">
               <i className="icon gif" />
-              <span className="text">GIF</span>
-            </DropDownItem>
-            <DropDownItem
+              <span className="text">GIF动态图</span>
+            </DropDownItem> */}
+            {/* <DropDownItem
               onClick={() => {
                 activeEditor.dispatchCommand(
                   INSERT_EXCALIDRAW_COMMAND,
@@ -842,8 +847,8 @@ export default function ToolbarPlugin(): JSX.Element {
               }}
               className="item">
               <i className="icon diagram-2" />
-              <span className="text">Excalidraw</span>
-            </DropDownItem>
+              <span className="text">流程图</span>
+            </DropDownItem> */}
             <DropDownItem
               onClick={() => {
                 showModal('Insert Table', (onClose) => (
@@ -855,9 +860,9 @@ export default function ToolbarPlugin(): JSX.Element {
               }}
               className="item">
               <i className="icon table" />
-              <span className="text">Table</span>
+              <span className="text">表格</span>
             </DropDownItem>
-            <DropDownItem
+            {/* <DropDownItem
               onClick={() => {
                 showModal('Insert Table', (onClose) => (
                   <InsertNewTableDialog
@@ -868,8 +873,8 @@ export default function ToolbarPlugin(): JSX.Element {
               }}
               className="item">
               <i className="icon table" />
-              <span className="text">Table (Experimental)</span>
-            </DropDownItem>
+              <span className="text">表格 (实验中)</span>
+            </DropDownItem> */}
             <DropDownItem
               onClick={() => {
                 showModal('Insert Poll', (onClose) => (
@@ -881,7 +886,7 @@ export default function ToolbarPlugin(): JSX.Element {
               }}
               className="item">
               <i className="icon poll" />
-              <span className="text">Poll</span>
+              <span className="text">投票</span> {/* poll */}
             </DropDownItem>
 
             <DropDownItem
@@ -895,7 +900,7 @@ export default function ToolbarPlugin(): JSX.Element {
               }}
               className="item">
               <i className="icon equation" />
-              <span className="text">Equation</span>
+              <span className="text">公式</span> {/* equation */}
             </DropDownItem>
             <DropDownItem
               onClick={() => {
@@ -907,7 +912,7 @@ export default function ToolbarPlugin(): JSX.Element {
               }}
               className="item">
               <i className="icon sticky" />
-              <span className="text">Sticky Note</span>
+              <span className="text">便利贴</span> {/* sticky Node */}
             </DropDownItem>
             <DropDownItem
               onClick={() => {
@@ -915,9 +920,9 @@ export default function ToolbarPlugin(): JSX.Element {
               }}
               className="item">
               <i className="icon caret-right" />
-              <span className="text">Collapsible container</span>
+              <span className="text">收缩盒</span> {/* Collapsible container */}
             </DropDownItem>
-            {EmbedConfigs.map((embedConfig) => (
+            {/* {EmbedConfigs.map((embedConfig) => (
               <DropDownItem
                 key={embedConfig.type}
                 onClick={() => {
@@ -930,24 +935,25 @@ export default function ToolbarPlugin(): JSX.Element {
                 {embedConfig.icon}
                 <span className="text">{embedConfig.contentName}</span>
               </DropDownItem>
-            ))}
+            ))} */}
           </DropDown>
         </>
       )}
       <Divider />
       <DropDown
         disabled={!isEditable}
-        buttonLabel="Align"
+        buttonLabel="对齐方式"
         buttonIconClassName="icon left-align"
         buttonClassName="toolbar-item spaced alignment"
-        buttonAriaLabel="Formatting options for text alignment">
+        buttonAriaLabel="文本格式化选项">
         <DropDownItem
           onClick={() => {
             activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'left');
           }}
           className="item">
           <i className="icon left-align" />
-          <span className="text">Left Align</span>
+          <span className="text">左对齐</span>
+          {/* left-align */}
         </DropDownItem>
         <DropDownItem
           onClick={() => {
@@ -955,7 +961,8 @@ export default function ToolbarPlugin(): JSX.Element {
           }}
           className="item">
           <i className="icon center-align" />
-          <span className="text">Center Align</span>
+          <span className="text">居中</span>
+          {/* center-align */}
         </DropDownItem>
         <DropDownItem
           onClick={() => {
@@ -963,7 +970,7 @@ export default function ToolbarPlugin(): JSX.Element {
           }}
           className="item">
           <i className="icon right-align" />
-          <span className="text">Right Align</span>
+          <span className="text">右对齐</span> {/* right-align */}
         </DropDownItem>
         <DropDownItem
           onClick={() => {
@@ -971,7 +978,7 @@ export default function ToolbarPlugin(): JSX.Element {
           }}
           className="item">
           <i className="icon justify-align" />
-          <span className="text">Justify Align</span>
+          <span className="text">两端对齐</span> {/* justify-align */}
         </DropDownItem>
         <Divider />
         <DropDownItem
@@ -980,7 +987,7 @@ export default function ToolbarPlugin(): JSX.Element {
           }}
           className="item">
           <i className={'icon ' + (isRTL ? 'indent' : 'outdent')} />
-          <span className="text">Outdent</span>
+          <span className="text">向左缩进</span> {/* outdent */}
         </DropDownItem>
         <DropDownItem
           onClick={() => {
@@ -988,7 +995,7 @@ export default function ToolbarPlugin(): JSX.Element {
           }}
           className="item">
           <i className={'icon ' + (isRTL ? 'outdent' : 'indent')} />
-          <span className="text">Indent</span>
+          <span className="text">向右缩进</span> {/* indent */}
         </DropDownItem>
       </DropDown>
 

@@ -56,7 +56,7 @@ export default function Settings(): JSX.Element {
                 window.location.reload();
               }}
               checked={isCollab}
-              text="Collaboration"
+              text="协作"
             />
           )}
           {isDevPlayground && (
@@ -69,25 +69,25 @@ export default function Settings(): JSX.Element {
                 }
               }}
               checked={isSplitScreen}
-              text="Split Screen"
+              text="拆分屏幕"
             />
           )}
           <Switch
             onClick={() => setOption('measureTypingPerf', !measureTypingPerf)}
             checked={measureTypingPerf}
-            text="Measure Perf"
+            text="性能测试"
           />
           <Switch
             onClick={() => setOption('showTreeView', !showTreeView)}
             checked={showTreeView}
-            text="Debug View"
+            text="调试视图"
           />
           <Switch
             onClick={() =>
               setOption('showNestedEditorTreeView', !showNestedEditorTreeView)
             }
             checked={showNestedEditorTreeView}
-            text="Nested Editors Debug View"
+            text="嵌套编辑器调试视图"
           />
           <Switch
             onClick={() => {
@@ -95,22 +95,22 @@ export default function Settings(): JSX.Element {
               setOption('isCollab', false);
             }}
             checked={isRichText}
-            text="Rich Text"
+            text="富文本"
           />
           <Switch
             onClick={() => setOption('isCharLimit', !isCharLimit)}
             checked={isCharLimit}
-            text="Char Limit"
+            text="字符限制"
           />
           <Switch
             onClick={() => setOption('isCharLimitUtf8', !isCharLimitUtf8)}
             checked={isCharLimitUtf8}
-            text="Char Limit (UTF-8)"
+            text="字符限制 (UTF-8)"
           />
           <Switch
             onClick={() => setOption('isMaxLength', !isMaxLength)}
             checked={isMaxLength}
-            text="Max Length"
+            text="最大长度"
           />
           <Switch
             onClick={() => setOption('isAutocomplete', !isAutocomplete)}
@@ -123,14 +123,14 @@ export default function Settings(): JSX.Element {
               setTimeout(() => window.location.reload(), 500);
             }}
             checked={disableBeforeInput}
-            text="Legacy Events"
+            text="遗留事件"
           />
           <Switch
             onClick={() => {
               setOption('showTableOfContents', !showTableOfContents);
             }}
             checked={showTableOfContents}
-            text="Table Of Contents"
+            text="目录"
           />
         </div>
       ) : null}
